@@ -26,7 +26,6 @@ class TradeController < ApplicationController
   end
 
   def accepted 
-    debugger
     trade = Trade.find_by(id: params[:trade_id])
     pokemons = JSON.parse trade[:pokemons_change]
     from_user_pokemons = User.find_by(id: trade.from_user_id).pokemons.pluck(:id)

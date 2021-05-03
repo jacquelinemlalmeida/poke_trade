@@ -7,18 +7,17 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Pokémon 1</th>
-        <th scope="col">Pokémon 2</th>
-        <th scope="col">Pokémon 3</th>
-        <th scope="col">Pokémon 4</th>
-        <th scope="col">Pokémon 5</th>
-        <th scope="col">Pokémon 6</th>
-        <th scope="col">Experiência Básica</th>
+      <% range = current_user.pokemons.size > 6 ? current_user.pokemons.size : 6 %>
+      <% for i in 1..range %>
+          <th scope="col">Pokémon <%=i%></th>
+      <% end %>
+      <th scope="col">Experiência Básica</th>    
       </tr>
     </thead>
     <tbody>
       <tr>
-        <% [0,1,2,3,4,5].each do |index| %>
+      <% array = Array (0..range-1) %>
+        <% array.each do |index| %>
           <td><%=create_checkbox(current_user.pokemons[index], 'from_user', current_user.id)%></td>
         <% end %>
         <td id="from_user_selected_pokemons_base_experience">0</td> 
@@ -31,14 +30,12 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Usuário</th>
-        <th scope="col">Pokémon 1</th>
-        <th scope="col">Pokémon 2</th>
-        <th scope="col">Pokémon 3</th>
-        <th scope="col">Pokémon 4</th>
-        <th scope="col">Pokémon 5</th>
-        <th scope="col">Pokémon 6</th>
-        <th scope="col">Experiência Básica</th>
+      <th scope="col"> Usuário </th>
+      <% range = User.all.map{|user| user.pokemons.size}.max %>
+      <% for i in 1..range %>
+          <th scope="col">Pokémon <%=i%></th>
+      <% end %>
+      <th scope="col">Experiência Básica</th>    
       </tr>
     </thead>
     <tbody>
@@ -51,7 +48,8 @@
           <%=user.username%>
           </label>
         </div></td>
-        <% [0,1,2,3,4,5].each do |index| %>
+        <% array = Array (0..range-1) %>
+        <% array.each do |index| %>
           <td><%=create_checkbox(user.pokemons[index], 'to_user', user.id)%></td>
         <% end %> 
           <td id="to_user_selected_pokemons_base_experience">0</td>

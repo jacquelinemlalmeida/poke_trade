@@ -41,7 +41,7 @@ module PokemonsHelper
   def is_a_fair_trade?(first_batch_pokemons, second_batch_pokemons)
     first_batch_pokemons_base_experience_avg = calculate_base_experience(first_batch_pokemons)
     second_batch_pokemons_base_experience_avg = calculate_base_experience(second_batch_pokemons)
-    debugger
+    
     absolute_difference = (first_batch_pokemons_base_experience_avg - second_batch_pokemons_base_experience_avg).abs
 
     absolute_difference < ([first_batch_pokemons_base_experience_avg, second_batch_pokemons_base_experience_avg].max)*FAIR_FACTOR
