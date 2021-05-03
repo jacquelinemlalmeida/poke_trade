@@ -9,7 +9,7 @@
       <th scope="col">Pokemons</th>
       <th scope="col">Data</th>
       <th scope="col">Status</th>
-      <th scope="col">Ação</th>
+      <th scope="col">'Ação'</th>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +20,21 @@
           <td><%= User.find_by(id: trade.to_user_id).username %></td>
           <td><%= get_user_pokemons(trade,'to_user') %></td>
           <td><%=trade.created_at.strftime('%d/%m/%Y às %H:%M') %></td>
-          <td><%= trade.changed_pokemons? ? 'Concluída' : 'Pendente' %></td>
-          <td>Colocar botão para finalizar troca</td>
+          <td><%= trade_status(trade)  %></td>
+          <td>
+            <% if trade.to_user_id == current_user.id && (!trade.accepted? && !trade.changed_pokemons?) %>
+              <div>
+                <%= link_to 'Aceitar', trade_accepted_path({trade_id: trade, accepted_flag: 1}), method: "post", class: 'btn btn-primary btn-block' %> 
+                <br> 
+                <%= link_to 'Recusar', trade_accepted_path({trade_id: trade, accepted_flag: 0}), method: "post", class: 'btn btn-primary btn-block' %>
+              </div>
+            <% elsif (trade.accepted? && trade.changed_pokemons?) || (!trade.accepted && trade.changed_pokemons?)%>
+               Nenhuma ação disponível
+            <% else %>
+              <%= link_to 'Cancelar', trade_cancel_path(trade_id: trade), method: "post", class: 'btn btn-primary btn-block' %>
+            <% end %>    
+          </td>
+          
         </tr> 
       <% end %>
   </tbody>

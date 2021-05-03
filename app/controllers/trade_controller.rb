@@ -2,8 +2,7 @@ class TradeController < ApplicationController
   include PokemonsHelper
 
   def history
-    @trades = Trade.where(from_user_id: current_user.id)
-    @trades = Trade.where(to_user_id: current_user.id) if @trades.empty?
+    @trades = Trade.where('from_user_id = ? OR to_user_id = ?', current_user.id, current_user.id)
   end
 
   def new
@@ -24,6 +23,32 @@ class TradeController < ApplicationController
     
     redirect_to trades_path
     
+  end
+
+  def accepted 
+    debugger
+    trade = Trade.find_by(id: params[:trade_id])
+    pokemons = JSON.parse trade[:pokemons_change]
+    from_user_pokemons = User.find_by(id: trade.from_user_id).pokemons.pluck(:id)
+    to_user_pokemons = User.find_by(id: trade.to_user_id).pokemons.pluck(:id)
+
+    return trade.update({accepted: false, changed_pokemons: true}) if params[:accepted_flag] == '0'
+
+    new_from_user_pokemons = from_user_pokemons - pokemons["from_user"] + pokemons["to_user"]
+
+    new_to_user_pokemons = to_user_pokemons - pokemons["to_user"] + pokemons["from_user"]
+
+    User.find_by(id: trade.to_user_id).pokemon_ids = new_to_user_pokemons
+    current_user.pokemon_ids = new_from_user_pokemons
+
+    trade.update({accepted: true, changed_pokemons: true})
+
+    redirect_to trades_path
+  end
+
+  def cancel 
+    Trade.find_by(id: params[:trade_id]).destroy
+    redirect_to trades_path
   end
 
 end

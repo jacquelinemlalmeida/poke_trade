@@ -63,4 +63,14 @@ module PokemonsHelper
     html +=  '</div>'
     html.html_safe
   end
+
+  def trade_status (trade)
+    if !trade.changed_pokemons? && !trade.accepted? 
+      return 'Pendente'
+    elsif trade.changed_pokemons && trade.accepted?
+      return 'Concluída'
+    else
+      return 'Recusada'
+    end  
+  end
 end

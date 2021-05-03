@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :trade, only: [:new, :show]
   post 'trade/new', to: 'trade#create'
 
-  get 'trades', to: 'trade#history' 
+  get 'trades', to: 'trade#history'
+  post 'trade/accepted/:trade_id', to: 'trade#accepted', as: :trade_accepted
+  post 'trade/cancel/:trade_id', to: 'trade#cancel', as: :trade_cancel
   
   resources :users, only: [:new, :create]
 

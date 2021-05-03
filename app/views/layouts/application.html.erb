@@ -13,7 +13,10 @@
   <body>
     <% unless ["sessions","users"].include? params[:controller] %> 
       <div class="row">
-        <div class='col-md-2'>     
+        <div class='col-md-2 text-center'>
+        <%= image_tag('poke_trade_logo.png', size: "100", class: 'mb-2') %>
+        <br>
+        Bem vindo <%= current_user.username %>     
           <ul class="nav flex-column nav-pills">
           <li class="nav-item <%= params[:action] == 'history' ? 'selected' : '' %>">
             <%= link_to 'Histórico de Trocas', trades_path, class: "nav-link" %>
