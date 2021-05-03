@@ -35594,3 +35594,196 @@ Processing by TradeController#new as HTML
 Completed 200 OK in 164ms (Views: 144.1ms | ActiveRecord: 14.7ms | Allocations: 30208)
 
 
+Started GET "/" for 127.0.0.1 at 2021-05-03 14:57:34 -0300
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#welcome as HTML
+Redirected to http://0.0.0.0:3010/trades
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms | Allocations: 1576)
+
+
+Started GET "/trades" for 127.0.0.1 at 2021-05-03 14:57:34 -0300
+Processing by TradeController#history as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering trade/history.html.erb within layouts/application
+  [1m[36mTrade Load (2.3ms)[0m  [1m[34mSELECT "trades".* FROM "trades" WHERE (from_user_id = 4 OR to_user_id = 4)[0m
+  ↳ app/views/trade/history.html.erb:16
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (1.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 899], [nil, 902]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 930], [nil, 935]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 899], [nil, 902]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (2.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1[0m  [["id", 915]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (1.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2, $3)[0m  [[nil, 899], [nil, 905], [nil, 915]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 1000], [nil, 1034]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 1000], [nil, 1034]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2, $3)[0m  [[nil, 899], [nil, 905], [nil, 916]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (1.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2, $3)[0m  [[nil, 902], [nil, 915], [nil, 1000]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.4ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 910], [nil, 1000]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (2.7ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 902], [nil, 916]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.9ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1[0m  [["id", 910]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (1.8ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2, $3)[0m  [[nil, 902], [nil, 905], [nil, 909]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1[0m  [["id", 1034]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered trade/history.html.erb within layouts/application (Duration: 105.1ms | Allocations: 30344)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 149.0ms | Allocations: 47325)
+Completed 200 OK in 188ms (Views: 116.6ms | ActiveRecord: 46.6ms | Allocations: 57441)
+
+
+Started GET "/" for 127.0.0.1 at 2021-05-03 14:57:40 -0300
+Processing by SessionsController#welcome as HTML
+Redirected to http://0.0.0.0:3010/trades
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 280)
+
+
+Started GET "/trades" for 127.0.0.1 at 2021-05-03 14:57:40 -0300
+Processing by TradeController#history as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering trade/history.html.erb within layouts/application
+  [1m[36mTrade Load (1.5ms)[0m  [1m[34mSELECT "trades".* FROM "trades" WHERE (from_user_id = 4 OR to_user_id = 4)[0m
+  ↳ app/views/trade/history.html.erb:16
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (3.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 899], [nil, 902]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (2.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 930], [nil, 935]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mCACHE Pokemon Load (0.0ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 899], [nil, 902]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.6ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1[0m  [["id", 915]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (1.2ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2, $3)[0m  [[nil, 899], [nil, 905], [nil, 915]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 1000], [nil, 1034]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mCACHE Pokemon Load (0.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 1000], [nil, 1034]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (3.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2, $3)[0m  [[nil, 899], [nil, 905], [nil, 916]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2, $3)[0m  [[nil, 902], [nil, 915], [nil, 1000]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.1ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 910], [nil, 1000]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (1.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2)[0m  [[nil, 902], [nil, 916]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.5ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1[0m  [["id", 910]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:18
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" IN ($1, $2, $3)[0m  [[nil, 902], [nil, 905], [nil, 909]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/trade/history.html.erb:20
+  [1m[36mPokemon Load (1.3ms)[0m  [1m[34mSELECT "pokemons".* FROM "pokemons" WHERE "pokemons"."id" = $1[0m  [["id", 1034]]
+  ↳ app/helpers/pokemons_helper.rb:56:in `get_user_pokemons'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered trade/history.html.erb within layouts/application (Duration: 72.9ms | Allocations: 20616)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 97.6ms | Allocations: 27898)
+Completed 200 OK in 106ms (Views: 73.9ms | ActiveRecord: 25.6ms | Allocations: 29873)
+
+

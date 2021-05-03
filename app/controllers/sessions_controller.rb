@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def welcome
+    redirect_to trades_path if session[:user_id].present?
   end
 
   def page_requires_login
