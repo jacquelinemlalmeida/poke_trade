@@ -32,14 +32,14 @@ module PokemonsHelper
     html.html_safe
   end
 
-  def calculate_average_base_experience(pokemons)
-    pokemons.pluck(:base_experience).sum / pokemons.size
+  def calculate_base_experience(pokemons)
+    pokemons.pluck(:base_experience).sum 
   end
 
   FAIR_FACTOR = 0.10
   def is_a_fair_trade?(first_batch_pokemons, second_batch_pokemons)
-    first_batch_pokemons_base_experience_avg = calculate_average_base_experience(first_batch_pokemons)
-    second_batch_pokemons_base_experience_avg = calculate_average_base_experience(second_batch_pokemons)
+    first_batch_pokemons_base_experience_avg = calculate_base_experience(first_batch_pokemons)
+    second_batch_pokemons_base_experience_avg = calculate_base_experience(second_batch_pokemons)
     debugger
     absolute_difference = (first_batch_pokemons_base_experience_avg - second_batch_pokemons_base_experience_avg).abs
 
