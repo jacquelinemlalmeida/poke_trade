@@ -7,7 +7,14 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "./user"
+import "./trades"
+require('jquery')
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets

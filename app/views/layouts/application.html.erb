@@ -11,6 +11,25 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% unless ["sessions","users"].include? params[:controller] %>
+      <div class="row">
+        <div class='col-md-2'>     
+          <ul class="nav flex-column nav-pills">
+          <li class="nav-item">
+            <%= link_to 'Histórico de Trocas', trade_history_show_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+          <%= link_to 'Nova Troca', new_trade_path, class: 'nav-link' %>
+          </li>
+        </ul>  
+        </div>
+          
+        <div class='col-md-10 ml-auto mr-auto'>
+          <%= yield %>
+        </div>  
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>      
   </body>
 </html>
