@@ -33,12 +33,13 @@ class TradeController < ApplicationController
 
     return trade.update({accepted: false, changed_pokemons: true}) if params[:accepted_flag] == '0'
 
-    new_from_user_pokemons = from_user_pokemons - pokemons["from_user"] + pokemons["to_user"]
+    new_from_user_pokemons = (from_user_pokemons - pokemons["from_user"]) + pokemons["to_user"]
 
-    new_to_user_pokemons = to_user_pokemons - pokemons["to_user"] + pokemons["from_user"]
-
-    User.find_by(id: trade.to_user_id).pokemon_ids = new_to_user_pokemons
-    current_user.pokemon_ids = new_from_user_pokemons
+    new_to_user_pokemons = (to_user_pokemons - pokemons["to_user"]) + pokemons["from_user"]
+    
+    current_user.pokemon_ids = new_to_user_pokemons
+    User.find_by(id: trade.from_user_id).pokemon_ids = new_from_user_pokemons
+   
 
     trade.update({accepted: true, changed_pokemons: true})
 
