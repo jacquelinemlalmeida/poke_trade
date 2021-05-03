@@ -1,1 +1,14 @@
 @import "bootstrap";
+
+.nav-item:hover{
+  background-color: lightblue;
+}
+
+li.nav-item.selected {
+  background-color: #09ade4;
+  color: #fff;
+}
+
+li.nav-item.selected a {
+  color: #fff;
+}

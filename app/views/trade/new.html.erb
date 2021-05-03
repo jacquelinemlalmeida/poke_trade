@@ -19,13 +19,13 @@
     <tbody>
       <tr>
         <% [0,1,2,3,4,5].each do |index| %>
-          <td><%=create_checkbox(current_user.pokemons[index], 'from_user')%></td>
+          <td><%=create_checkbox(current_user.pokemons[index], 'from_user', current_user.id)%></td>
         <% end %>
         <td id="from_user_selected_pokemons_base_experience">0</td> 
       </tr> 
     </tbody>
   </table>
-
+  <div id="change_analisys"></div>
   <p>Escolha um usuário abaixo e os pokemons que gostaria de trocar.</p>
 
   <table class="table">
@@ -43,36 +43,24 @@
     </thead>
     <tbody>
       <% @users.each do |user| %>
+        <% next if user == current_user %>
         <tr>
           <td> <div class="form-check">
-          <input class="form-check-input" type="radio" name="to_user_id" id="to_user_id_ <%=user.id%>" value=" <%=user.id%>">
-          <label class="form-check-label" for="to_user_id_ <%=user.id%>">
+          <input class="form-check-input to_user" type="radio" name="to_user_id" id="to_user_id_<%=user.id%>" value="<%=user.id%>">
+          <label class="form-check-label" for="to_user_id_<%=user.id%>">
           <%=user.username%>
           </label>
         </div></td>
         <% [0,1,2,3,4,5].each do |index| %>
-          <td><%=create_checkbox(user.pokemons[index], 'to_user')%></td>
+          <td><%=create_checkbox(user.pokemons[index], 'to_user', user.id)%></td>
         <% end %> 
           <td id="to_user_selected_pokemons_base_experience">0</td>
         </tr>
       <% end %>  
     </tbody>
   </table>
-  <%= f.submit 'Solicitar troca', class: 'btn btn-primary btn-lg btn-block w-25 m-auto' %>
+  <%= f.submit 'Solicitar troca', id: 'btn-submit', class: 'btn btn-primary btn-lg btn-block w-25 m-auto disabled' %>
 <% end %>
 
-<%= javascript_tag do %>
-  function calculateBaseExperience(el, user){
-    let sum = 0,
-        avg = 0.0 
-    selected_pokemons = $(el).closest('tr').find('input:checked');
-        
-    selected_pokemons.each(function(){
-      sum += parseFloat($(this).data('experience'))
-    });
-    console.log(sum)
-    console.log(selected_pokemons)
-    
-    $(el).closest('tr').find('#' + user + '_selected_pokemons_base_experience').html(sum)
-  }
-<% end %>
+<%= javascript_pack_tag 'trades' %>
+

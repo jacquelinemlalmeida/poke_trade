@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user&.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect_to trade_history_show_path
+        redirect_to trades_path
     else
         redirect_to '/login'
     end
@@ -24,5 +24,10 @@ class SessionsController < ApplicationController
   end
 
   def page_requires_login
+  end
+
+  def logout 
+    session[:user_id] = nil
+    redirect_to welcome_path
   end
 end

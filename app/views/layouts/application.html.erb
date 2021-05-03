@@ -11,15 +11,18 @@
   </head>
 
   <body>
-    <% unless ["sessions","users"].include? params[:controller] %>
+    <% unless ["sessions","users"].include? params[:controller] %> 
       <div class="row">
         <div class='col-md-2'>     
           <ul class="nav flex-column nav-pills">
-          <li class="nav-item">
-            <%= link_to 'Histórico de Trocas', trade_history_show_path, class: 'nav-link' %>
+          <li class="nav-item <%= params[:action] == 'history' ? 'selected' : '' %>">
+            <%= link_to 'Histórico de Trocas', trades_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item <%= params[:action] == 'new' ? 'selected' : '' %>">
+            <%= link_to 'Nova Troca', new_trade_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-          <%= link_to 'Nova Troca', new_trade_path, class: 'nav-link' %>
+            <%= link_to 'Logout', logout_path, class: 'nav-link' %>
           </li>
         </ul>  
         </div>

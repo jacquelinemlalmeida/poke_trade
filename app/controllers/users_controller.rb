@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       :password))
       @user.pokemon_ids = pokemons_ids
       session[:user_id] = @user.id
-      redirect_to trade_history_show_path
+      redirect_to trades_path
     end
   end
 end
